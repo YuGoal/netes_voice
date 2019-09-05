@@ -36,6 +36,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
         mavenCentral()
         maven {
             url 'http://localhost:8081/repository/imooc_release/'

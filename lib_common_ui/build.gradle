@@ -23,4 +23,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation rootProject.depsLibs.appcompact
+    implementation rootProject.depsLibs.recyclerview
+    implementation project(':lib_image_loader')
+
+    implementation rootProject.depsLibs.magicindicator
 }
