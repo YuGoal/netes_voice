@@ -23,4 +23,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation rootProject.depsLibs.appcompact
     implementation rootProject.depsLibs.constraint
+    implementation rootProject.depsLibs.magicindicator
+    implementation rootProject.depsLibs.support
+    implementation project(path: ':lib_common_ui')
 }
