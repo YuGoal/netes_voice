@@ -56,7 +56,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         initData();
     }
 
-
     private void initView() {
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggleView = findViewById(R.id.toggle_view);
