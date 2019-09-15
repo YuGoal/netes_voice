@@ -24,4 +24,5 @@ dependencies {
 
     implementation rootProject.depsLibs.appcompact
     api rootProject.depsLibs.okhttp
+    implementation rootProject.depsLibs.gson
 }

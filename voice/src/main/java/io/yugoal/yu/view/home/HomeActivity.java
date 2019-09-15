@@ -70,7 +70,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initMagicIndicator() {
-        MagicIndicator magicIndicator = findViewById(R.id.magic_indicator);
+        MagicIndicator  magicIndicator = findViewById(R.id.magic_indicator);
         magicIndicator.setBackgroundColor(Color.WHITE);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);
