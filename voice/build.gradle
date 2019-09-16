@@ -26,4 +26,5 @@ dependencies {
     implementation rootProject.depsLibs.magicindicator
     implementation rootProject.depsLibs.support
     implementation project(path: ':lib_common_ui')
+    implementation project(path: ':lib_network')
 }
