@@ -21,10 +21,16 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation rootProject.depsLibs.appcompact
     implementation rootProject.depsLibs.constraint
     implementation rootProject.depsLibs.magicindicator
     implementation rootProject.depsLibs.support
+    implementation rootProject.depsLibs.rxjava
+    implementation rootProject.depsLibs.rxandroid
+    implementation rootProject.depsLibs.eventbus
+
     implementation project(path: ':lib_common_ui')
     implementation project(path: ':lib_network')
+    implementation project(path: ':lib_image_loader')
 }

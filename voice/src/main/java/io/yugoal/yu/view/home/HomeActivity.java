@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
@@ -18,11 +19,19 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import io.yugoal.lib_common_ui.base.BaseActivity;
 import io.yugoal.lib_common_ui.pager_indictor.ScaleTransitionPagerTitleView;
+import io.yugoal.lib_image_loader.app.ImageLoaderManager;
 import io.yugoal.yu.R;
 import io.yugoal.yu.model.CHANNEL;
+import io.yugoal.yu.utils.UserManager;
 import io.yugoal.yu.view.home.adapter.HomePagerAdapter;
+import io.yugoal.yu.view.login.LoginActivity;
+import io.yugoal.yu.view.login.LoginEvent;
 
 /**
  * @author caoyu
@@ -33,8 +42,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     private static final CHANNEL[] CHANNELS =
             new CHANNEL[]{CHANNEL.MY, CHANNEL.DISCORY, CHANNEL.FRIEND};
-
-
     /*
      * View
      */
@@ -45,23 +52,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private HomePagerAdapter mAdapter;
     private View mDrawerQrcodeView;
     private View mDrawerShareView;
-    private View unLogginLayout;
     private ImageView mPhotoView;
+
+    private LinearLayout unloggin_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EventBus.getDefault().register(this);
         initView();
         initData();
     }
 
     private void initView() {
+        mPhotoView = findViewById(R.id.avatr_view);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggleView = findViewById(R.id.toggle_view);
         mToggleView.setOnClickListener(this);
         mSearchView = findViewById(R.id.search_view);
         mSearchView.setOnClickListener(this);
+        unloggin_layout = findViewById(R.id.unloggin_layout);
+        unloggin_layout.setOnClickListener(this);
         //初始化adpater
         mAdapter = new HomePagerAdapter(getSupportFragmentManager(), CHANNELS);
         mViewPager = findViewById(R.id.view_pager);
@@ -70,7 +82,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initMagicIndicator() {
-        MagicIndicator  magicIndicator = findViewById(R.id.magic_indicator);
+        MagicIndicator magicIndicator = findViewById(R.id.magic_indicator);
         magicIndicator.setBackgroundColor(Color.WHITE);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);
@@ -118,6 +130,24 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.unloggin_layout:
+                LoginActivity.start(this);
+                break;
+        }
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLoginEvent(LoginEvent loginEvent) {
+        unloggin_layout.setVisibility(View.GONE);
+        mPhotoView.setVisibility(View.VISIBLE);
+        ImageLoaderManager.getInstance().displayImageForCircle(mPhotoView,
+                UserManager.getInstance().getUser().data.photoUrl);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

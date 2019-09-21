@@ -41,7 +41,7 @@ public class CommonOkHttpClient {
         okHttpClientBuilder.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request().newBuilder().addHeader("", "").build();
+                Request request = chain.request().newBuilder().addHeader("name", "").build();
                 return chain.proceed(request);
             }
         });
