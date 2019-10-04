@@ -2,31 +2,14 @@
 apply from: rootProject.file('imooc.gradle')
 buildscript {
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
-        maven {
-            url 'http://localhost:8081/repository/imooc_release/'
-            credentials {
-                username 'admin'
-                password 'admin123'
-
-            }
-        }
-
-        mavenCentral()
-        maven {
-            url 'http://localhost:8081/repository/imooc_snapshot/'
-            credentials {
-                username 'admin'
-                password 'admin123'
-
-            }
-        }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
-
+        //greendao插件依赖
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -34,28 +17,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        jcenter()
         maven { url "https://jitpack.io" }
-        mavenCentral()
-        maven {
-            url 'http://localhost:8081/repository/imooc_release/'
-            credentials {
-                username 'admin'
-                password 'admin123'
-
-            }
-        }
-
-        mavenCentral()
-        maven {
-            url 'http://localhost:8081/repository/imooc_snapshot/'
-            credentials {
-                username 'admin'
-                password 'admin123'
-
-            }
-        }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
 }
 
