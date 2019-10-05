@@ -11,7 +11,7 @@ import android.util.Log;
 
 import org.greenrobot.eventbus.EventBus;
 
-import io.yugoal.lib_audio.mediaplayer.app.AudioHelper;
+import io.yugoal.lib_audio.app.AudioHelper;
 import io.yugoal.lib_audio.mediaplayer.events.AudioCompleteEvent;
 import io.yugoal.lib_audio.mediaplayer.events.AudioErrorEvent;
 import io.yugoal.lib_audio.mediaplayer.events.AudioLoadEvent;
@@ -215,7 +215,7 @@ public class AudioPlayer implements MediaPlayer.OnCompletionListener, MediaPlaye
      *
      * @return 播放器状态
      */
-    private CustomMediaPlayer.Status getStatus() {
+    public CustomMediaPlayer.Status getStatus() {
         if (mMediaPlayer != null) {
             return mMediaPlayer.getmState();
         }

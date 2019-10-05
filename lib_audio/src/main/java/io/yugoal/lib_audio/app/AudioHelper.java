@@ -1,4 +1,4 @@
-package io.yugoal.lib_audio.mediaplayer.app;
+package io.yugoal.lib_audio.app;
 
 import android.content.Context;
 
