@@ -39,7 +39,6 @@ public class AudioController {
     private ArrayList<AudioBean> mQueue;
 
     public AudioController() {
-        EventBus.getDefault().register(this);
         mAudioPlayer = new AudioPlayer();
         mPlayMode = PlayMode.LOOP;
         mQueue = new ArrayList<>();
@@ -245,7 +244,6 @@ public class AudioController {
 
     public void release() {
         mAudioPlayer.release();
-        EventBus.getDefault().unregister(this);
     }
 
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Yu.iml" filepath="$PROJECT_DIR$/Yu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Yu.iml" filepath="$PROJECT_DIR$/.idea/Yu.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_audio/lib_audio.iml" filepath="$PROJECT_DIR$/lib_audio/lib_audio.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" filepath="$PROJECT_DIR$/lib_common_ui/lib_common_ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_image_loader/lib_image_loader.iml" filepath="$PROJECT_DIR$/lib_image_loader/lib_image_loader.iml" />
@@ -13,8 +13,6 @@
       <module fileurl="file://$PROJECT_DIR$/lib_updata/lib_updata.iml" filepath="$PROJECT_DIR$/lib_updata/lib_updata.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_video/lib_video.iml" filepath="$PROJECT_DIR$/lib_video/lib_video.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_webview/lib_webview.iml" filepath="$PROJECT_DIR$/lib_webview/lib_webview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netes_voice.iml" filepath="$PROJECT_DIR$/netes_voice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/netes_voice-Yu.iml" filepath="$PROJECT_DIR$/netes_voice-Yu.iml" />
       <module fileurl="file://$PROJECT_DIR$/voice/voice.iml" filepath="$PROJECT_DIR$/voice/voice.iml" />
     </modules>
   </component>
