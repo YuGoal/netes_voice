@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.yugoal.lib_audio" />
+    package="io.yugoal.lib_audio" >
+
+    <application>
+        <activity android:name=".view.MusicPlayerActivity" />
+    </application>
+</manifest>
