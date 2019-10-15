@@ -15,11 +15,14 @@ import io.yugoal.lib_audio.R;
 import io.yugoal.lib_audio.app.AudioHelper;
 import io.yugoal.lib_audio.mediaplayer.core.AudioController;
 import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
+import io.yugoal.lib_image_loader.app.ImageLoaderManager;
 
 /**
  * @author caoyu
  * date  2019/10/11
  * 音乐Notification帮助类
+ * 1.完成notification的创建和初始化
+ * 2.对外提供notification的方法
  */
 public class NotificationHelper {
     public static final String CHANNEL_ID = "channel_id_audio";
@@ -98,6 +101,52 @@ public class NotificationHelper {
         mSmallRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
 
 
+    }
+
+    public Notification getNotification() {
+        return mNotification;
+    }
+
+    /**
+     * 显示Notification的加载状态
+     */
+    public void showLoadStatus(AudioBean bean) {
+        //防止空指针crash
+        mAudioBean = bean;
+        if (mRemoteViews != null) {
+            mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+            mRemoteViews.setTextViewText(R.id.title_view, mAudioBean.name);
+            mRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
+            ImageLoaderManager.getInstance()
+                    .displayImageForNotification(AudioHelper.getContext(), mRemoteViews, R.id.image_view,
+                            mNotification, NOTIFICATION_ID, mAudioBean.albumPic);
+
+            //小布局也要更新
+            mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+            mSmallRemoteViews.setTextViewText(R.id.title_view, mAudioBean.name);
+            mSmallRemoteViews.setTextViewText(R.id.tip_view, mAudioBean.album);
+            ImageLoaderManager.getInstance()
+                    .displayImageForNotification(AudioHelper.getContext(), mSmallRemoteViews, R.id.image_view,
+                            mNotification, NOTIFICATION_ID, mAudioBean.albumPic);
+
+            mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+        }
+    }
+
+    public void showPlayStatus() {
+        if (mRemoteViews != null) {
+            mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+            mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_pause_white);
+            mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+        }
+    }
+
+    public void showPauseStatus() {
+        if (mRemoteViews != null) {
+            mRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_play_white);
+            mSmallRemoteViews.setImageViewResource(R.id.play_view, R.mipmap.note_btn_play_white);
+            mNotificationManager.notify(NOTIFICATION_ID, mNotification);
+        }
     }
 
     /**
