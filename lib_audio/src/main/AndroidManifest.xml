@@ -1,7 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.yugoal.lib_audio" >
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application>
         <activity android:name=".view.MusicPlayerActivity" />
+        <service
+            android:name=".mediaplayer.core.MusicService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 </manifest>

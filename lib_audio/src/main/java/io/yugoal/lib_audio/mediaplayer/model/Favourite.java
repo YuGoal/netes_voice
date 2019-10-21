@@ -1,15 +1,14 @@
 package io.yugoal.lib_audio.mediaplayer.model;
 
-import com.imooc.lib_audio.mediaplayer.db.AudioBeanDao;
-import com.imooc.lib_audio.mediaplayer.db.DaoSession;
-
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToOne;
-import com.imooc.lib_audio.mediaplayer.db.FavouriteDao;
+import io.yugoal.lib_audio.mediaplayer.db.DaoSession;
+import io.yugoal.lib_audio.mediaplayer.db.AudioBeanDao;
+import io.yugoal.lib_audio.mediaplayer.db.FavouriteDao;
 
 /**
  * @author caoyu
@@ -120,7 +119,8 @@ public class Favourite {
     }
 
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1142028328) public void __setDaoSession(DaoSession daoSession) {
+    @Generated(hash = 1142028328)
+    public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getFavouriteDao() : null;
     }

@@ -132,7 +132,7 @@ public class MusicService extends Service implements NotificationHelper.Notifica
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onAudioFavouriteEvent(AudioFavouriteEvent event) {
         //更新notifacation收藏状态
-//        NotificationHelper.getInstance().changeFavouriteStatus(event.isFavourite);
+        NotificationHelper.getInstance().changeFavouriteStatus(event.isFavourite);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -169,7 +169,7 @@ public class MusicService extends Service implements NotificationHelper.Notifica
                     break;
                 case EXTRA_FAV:
                     //收藏
-//                    AudioController.getInstance().changeFavourite();
+                    AudioController.getInstance().changeFavourite();
                     break;
             }
         }

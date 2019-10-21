@@ -2,10 +2,6 @@ package io.yugoal.lib_audio.mediaplayer.db;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.imooc.lib_audio.mediaplayer.db.DaoMaster;
-import com.imooc.lib_audio.mediaplayer.db.DaoSession;
-import com.imooc.lib_audio.mediaplayer.db.FavouriteDao;
-
 import io.yugoal.lib_audio.app.AudioHelper;
 import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
 import io.yugoal.lib_audio.mediaplayer.model.Favourite;

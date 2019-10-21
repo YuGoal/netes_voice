@@ -5,6 +5,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.Random;
 
+import io.yugoal.lib_audio.mediaplayer.db.GreenDaoHelper;
+import io.yugoal.lib_audio.mediaplayer.events.AudioFavouriteEvent;
 import io.yugoal.lib_audio.mediaplayer.events.AudioPlayModeEvent;
 import io.yugoal.lib_audio.mediaplayer.exception.AudioQueueEmptyException;
 import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
@@ -108,6 +110,7 @@ public class AudioController {
         }
     }
 
+
     private void addCustomAudio(int index, AudioBean bean) {
         if (mQueue == null) {
             throw new AudioQueueEmptyException("当前播放队列为空,请先设置播放队列.");
@@ -190,6 +193,21 @@ public class AudioController {
 
     public int getQueueIndex() {
         return mQueueIndex;
+    }
+
+    /**
+     * 添加/移除到收藏
+     */
+    public void changeFavourite() {
+        if (null != GreenDaoHelper.selectFavourite(getNowPlaying())) {
+            //已收藏，移除
+            GreenDaoHelper.removeFavourite(getNowPlaying());
+            EventBus.getDefault().post(new AudioFavouriteEvent(false));
+        } else {
+            //未收藏，添加收藏
+            GreenDaoHelper.addFavourite(getNowPlaying());
+            EventBus.getDefault().post(new AudioFavouriteEvent(true));
+        }
     }
 
     /**
