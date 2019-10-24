@@ -161,7 +161,7 @@ public class AudioPlayer implements MediaPlayer.OnCompletionListener, MediaPlaye
      * 对外提供的播放方法
      */
     public void resume() {
-        if (CustomMediaPlayer.Status.STOPPED == getStatus()) {
+        if (getStatus() == CustomMediaPlayer.Status.PAUSED) {
             start();
         }
     }
@@ -170,14 +170,14 @@ public class AudioPlayer implements MediaPlayer.OnCompletionListener, MediaPlaye
      * 对外暴露pause方法
      */
     public void pause() {
-        if (CustomMediaPlayer.Status.STARTED == getStatus()) {
+        if (getStatus() == CustomMediaPlayer.Status.STARTED) {
             mMediaPlayer.pause();
-            //关闭wifi锁
+            // 关闭wifi锁
             if (mWifiLock.isHeld()) {
                 mWifiLock.release();
             }
-            //取消音频焦点
-            if (mAudioFocusManager.requestAudioFocus()) {
+            // 取消音频焦点
+            if (mAudioFocusManager != null) {
                 mAudioFocusManager.abandonAudioFocus();
             }
             //停止发送进度消息

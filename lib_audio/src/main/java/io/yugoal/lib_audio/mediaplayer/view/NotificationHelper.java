@@ -1,4 +1,4 @@
-package io.yugoal.lib_audio.view;
+package io.yugoal.lib_audio.mediaplayer.view;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

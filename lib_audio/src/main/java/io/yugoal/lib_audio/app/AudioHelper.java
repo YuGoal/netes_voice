@@ -9,7 +9,6 @@ import io.yugoal.lib_audio.mediaplayer.core.AudioController;
 import io.yugoal.lib_audio.mediaplayer.core.MusicService;
 import io.yugoal.lib_audio.mediaplayer.db.GreenDaoHelper;
 import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
-import io.yugoal.lib_audio.view.MusicPlayerActivity;
 
 /**
  * @author caoyu

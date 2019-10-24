@@ -23,9 +23,9 @@ import io.yugoal.lib_audio.mediaplayer.events.AudioPauseEvent;
 import io.yugoal.lib_audio.mediaplayer.events.AudioReleaseEvent;
 import io.yugoal.lib_audio.mediaplayer.events.AudioStartEvent;
 import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
-import io.yugoal.lib_audio.view.NotificationHelper;
+import io.yugoal.lib_audio.mediaplayer.view.NotificationHelper;
 
-import static io.yugoal.lib_audio.view.NotificationHelper.NOTIFICATION_ID;
+import static io.yugoal.lib_audio.mediaplayer.view.NotificationHelper.NOTIFICATION_ID;
 
 /**
  * @author caoyu
