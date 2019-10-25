@@ -37,6 +37,7 @@ import io.yugoal.lib_audio.mediaplayer.model.AudioBean;
 import io.yugoal.lib_audio.mediaplayer.utils.Utils;
 import io.yugoal.lib_common_ui.base.BaseActivity;
 import io.yugoal.lib_image_loader.app.ImageLoaderManager;
+import io.yugoal.lib_share.share.ShareDialog;
 
 /**
  * @author caoyu
@@ -109,7 +110,7 @@ public class MusicPlayerActivity extends BaseActivity {
         findViewById(R.id.share_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                shareMusic(mAudioBean.mUrl, mAudioBean.name);
+                shareMusic(mAudioBean.mUrl, mAudioBean.name);
             }
         });
         findViewById(R.id.show_list_view).setOnClickListener(new View.OnClickListener() {
@@ -282,5 +283,19 @@ public class MusicPlayerActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 分享慕课网给好友
+     */
+    private void shareMusic(String url, String name) {
+        ShareDialog dialog = new ShareDialog(this);
+        dialog.setShareType(5);
+        dialog.setShareTitle(name);
+        dialog.setShareTitleUrl(url);
+        dialog.setShareText("慕课网");
+        dialog.setShareSite("imooc");
+        dialog.setShareSiteUrl("http://www.imooc.com");
+        dialog.show();
     }
 }
